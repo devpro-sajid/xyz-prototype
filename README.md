@@ -1,8 +1,18 @@
-# React + Vite
+# Website Name: XYZ ENGINE
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# XYZ ENGINE Live Link:-
+  Website Link -> [https://xyz-prototype.netlify.app/](https://xyz-prototype.netlify.app/)
 
-Currently, two official plugins are available:
+## Exclusive Features of this website :-
++ Responsive Menu Navbar
++ All pages are Responsive for both Mobile and Tablet and obviously for Desktop.
++ Multi-step form with progressbar
++ Result page with the submitted value of form's by user himself
++ Chart is included in Result page
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Used packages for this website :-
++ tailwind css
++ react router dom
++ react-papaparse
++ react-icons
++ react-toastify
