@@ -19,6 +19,15 @@ body,
 .bg-primary{
   @apply bg-[#F4514A]
 }
+.bg-secondary{
+  @apply bg-[#f4504a22]
+}
+.border-primary{
+  @apply border border-[#F4514A]
+}
+.border-secondary{
+  @apply border border-[#f4504a22]
+}
 .text-primary{
   @apply text-[#F4514A]
 }
