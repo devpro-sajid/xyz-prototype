@@ -1,3 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* global css */
+html,
+body,
+#root,
+.app{
+    height:100%;
+    width:100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.boxed-container{
+  @apply px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8
+}
+.bg-primary{
+  @apply bg-[#F4514A]
+}
+.text-primary{
+  @apply text-[#F4514A]
+}
+/* nav menu css */
+.active{
+  @apply font-medium text-[#F4514A] transition-colors duration-200
+}
+
+.default{
+  @apply font-medium  text-white transition-colors duration-200 hover:text-[#F4514A]
+}
