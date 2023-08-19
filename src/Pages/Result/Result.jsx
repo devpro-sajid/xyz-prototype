@@ -57,7 +57,7 @@ const Result = () => {
                     Max Z
                   </th>
                   <th scope="col" className="px-3 py-4">
-                    Min X
+                    Min Z
                   </th>
                 </tr>
               </thead>
