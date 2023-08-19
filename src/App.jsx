@@ -355,7 +355,7 @@ function App() {
                   <input
                     type="number"
                     name="min_Y"
-                    value={maxMinValues.min_X}
+                    value={maxMinValues.min_Y}
                     className="p-2 border border-secondary mt-1 outline-0  focus:border-[#F4514A] rounded-md"
                     onChange={handleMinMaxChange}
                     placeholder="Min Y"
