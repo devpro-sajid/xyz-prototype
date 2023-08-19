@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Papa from "papaparse";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
@@ -139,21 +139,21 @@ function App() {
       maxMinValues.min_Y &&
       maxMinValues.min_Z
     ) {
+      toast.success('Successfully Submitted, will be in touch soon!', {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "light",
+        });
       localStorage.setItem(
         "projectInformation",
         JSON.stringify(projectInformation)
       );
       localStorage.setItem("maxMinValues", JSON.stringify(maxMinValues));
-      toast.success('Successfully Submitted, will be in touch soon!', {
-        position: "top-center",
-        autoClose: 4000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        });
+      
       return navigate("result");
     } else {
       toast.error('Please fill up all the input fields!', {
@@ -408,8 +408,6 @@ function App() {
         </div>
       </div>
       {/* form div end */}
-
-      <ToastContainer />
     </div>
   );
 }

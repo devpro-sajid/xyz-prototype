@@ -18,7 +18,7 @@ const Result = () => {
     kp: index,
     x: parseFloat(xCollection[index]),
   }));
-  console.log(chartData);
+ 
   return (
     <div className="bg-secondary py-16">
       <div className="boxed-container">
@@ -139,6 +139,7 @@ const Result = () => {
         ) : (
           <></>
         )}
+
       </div>
     </div>
   );
