@@ -85,7 +85,7 @@ const Result = () => {
                     {maxMinValues?.max_Y}
                   </td>
                   <td className="whitespace-nowrap px-3 py-4 align-top">
-                    {maxMinValues?.min_X}
+                    {maxMinValues?.min_Y}
                   </td>
                   <td className="whitespace-nowrap px-3 py-4 align-top">
                     {maxMinValues?.max_Z}
