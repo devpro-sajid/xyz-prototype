@@ -1,11 +1,21 @@
-import { useEffect, useState } from "react";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from "recharts";
+import { useEffect, useState, useRef} from "react";
+import html2pdf from 'html2pdf.js';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+} from "recharts";
 
 const Result = () => {
   const [projectInfo, setProjectInfo] = useState({});
   const [maxMinValues, setMaxMinValues] = useState({});
   const [kpCollection, setKpCollection] = useState([]);
   const [xCollection, setXCollection] = useState([]);
+const [downloadState,setDownloadState]=useState('Download Result')
 
   useEffect(() => {
     setProjectInfo(JSON.parse(localStorage.getItem("projectInformation")));
@@ -18,10 +28,32 @@ const Result = () => {
     kp: index,
     x: parseFloat(xCollection[index]),
   }));
- 
+
+// result download handler
+const contentRef = useRef(null);
+
+  const downloadPDF = () => {
+    setDownloadState('Downloading');
+    
+    const contentElement = contentRef.current;
+
+    if (contentElement) {
+      const pdfOptions = {
+        margin: 8,
+        filename: 'result.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 1 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' },
+      };
+
+      html2pdf().from(contentElement).set(pdfOptions).save();
+    }
+    setDownloadState('Download Result');
+  };
+
   return (
     <div className="bg-secondary py-16">
-      <div className="boxed-container">
+      <div className="boxed-container" ref={contentRef}>
         {/* table */}
         <h2 className="text-black font-bold text-2xl mb-3">Form Info Table:</h2>
         {projectInfo && maxMinValues ? (
@@ -112,25 +144,25 @@ const Result = () => {
             <h2 className="text-black font-bold text-2xl mt-6 mb-3">
               Chart of KP and X:
             </h2>
-            <div className="w-100 overflow-x-scroll ">
+            <div className="w-100 overflow-x-scroll mb-6">
               <BarChart width={20000} height={600} data={chartData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="kp" />
                 <YAxis dataKey="x" />
                 <Tooltip
-            content={({ payload }) => {
-              if (payload && payload.length > 0) {
-                const data = payload[0].payload;
-                return (
-                  <div className="custom-tooltip bg-white p-3">
-                    <p>KP: {data.kp}</p>
-                    <p>X: {data.x}</p>
-                  </div>
-                );
-              }
-              return null;
-            }}
-          />
+                  content={({ payload }) => {
+                    if (payload && payload.length > 0) {
+                      const data = payload[0].payload;
+                      return (
+                        <div className="custom-tooltip bg-white p-3">
+                          <p>KP: {data.kp}</p>
+                          <p>X: {data.x}</p>
+                        </div>
+                      );
+                    }
+                    return null;
+                  }}
+                />
                 <Legend />
                 <Bar dataKey="x" fill="#F4514A" />
               </BarChart>
@@ -139,7 +171,9 @@ const Result = () => {
         ) : (
           <></>
         )}
-
+      </div>
+      <div className="text-center">
+        {projectInfo && maxMinValues? <button className="px-4 sm:py-2 py-1 text-lg rounded-md text-white bg-primary" onClick={downloadPDF}>{downloadState}</button>:<></>}       
       </div>
     </div>
   );
